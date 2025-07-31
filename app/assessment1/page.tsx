@@ -205,7 +205,12 @@ export default function Assessment1() {
     setIsSubmitting(true);
 
     const formData = new FormData(event.target as HTMLFormElement);
-    const newData = {
+    const newData: {
+      staffName: string;
+      position: FormDataEntryValue | null;
+      evaluator: FormDataEntryValue | null;
+      topics: Record<string, any>;
+    } = {
       staffName: selectedStaff,
       position: formData.get("position"),
       evaluator: formData.get("evaluator"),
