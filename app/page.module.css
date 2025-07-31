@@ -1,0 +1,118 @@
+/* Modern table and form styles for Kanit font */
+.page {
+  font-family: 'Kanit', sans-serif;
+  background: #f8fafc;
+  min-height: 100vh;
+  padding-bottom: 48px;
+}
+
+.form {
+  font-family: 'Kanit', sans-serif;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(44, 62, 80, 0.07);
+  padding: 32px 24px 32px 24px;
+  margin-top: 32px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-family: 'Kanit', sans-serif;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(44, 62, 80, 0.06);
+}
+
+.table th {
+  background: linear-gradient(90deg, #e0f2fe 0%, #f1f5f9 100%);
+  color: #1e293b;
+  font-weight: 600;
+  font-size: 1.08rem;
+  padding: 12px 8px;
+  border-bottom: 2px solid #bae6fd;
+  text-align: center;
+}
+
+.table td {
+  background: #fff;
+  color: #222;
+  font-size: 1rem;
+  padding: 10px 8px;
+  border-bottom: 1px solid #e2e8f0;
+  text-align: center;
+  transition: background 0.15s;
+}
+
+.table tr:hover td {
+  background: #f0f9ff;
+}
+
+.table input[type="date"],
+.table select {
+  font-family: 'Kanit', sans-serif;
+  font-size: 1rem;
+  padding: 4px 8px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  background: #f8fafc;
+  color: #222;
+  transition: border 0.2s;
+}
+
+.table input[type="date"]:focus,
+.table select:focus {
+  border: 1.5px solid #38bdf8;
+  outline: none;
+}
+
+.table input[type="radio"] {
+  accent-color: #2e8b57;
+  width: 18px;
+  height: 18px;
+}
+
+.table tr td:first-child,
+.table tr th:first-child {
+  border-left: none;
+}
+
+.table tr td:last-child,
+.table tr th:last-child {
+  border-right: none;
+}
+
+.table tr:last-child td {
+  border-bottom: none;
+}
+
+/* Header row for topic group */
+.table .topic-header {
+  background: linear-gradient(90deg, #f1f5f9 0%, #e0e7ef 100%);
+  color: #1e293b;
+  font-weight: 700;
+  font-size: 1.08rem;
+  text-align: left;
+  padding: 12px 16px;
+  border-bottom: 2px solid #bae6fd;
+}
+
+button.primary {
+  font-family: 'Kanit', sans-serif;
+  background: linear-gradient(90deg, #38bdf8 0%, #2e8b57 100%);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 36px;
+  font-size: 1.15rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(44, 62, 80, 0.08);
+  transition: background 0.2s, box-shadow 0.2s;
+}
+button.primary:hover {
+  background: linear-gradient(90deg, #0ea5e9 0%, #256d46 100%);
+  box-shadow: 0 4px 16px rgba(44, 62, 80, 0.13);
+}
