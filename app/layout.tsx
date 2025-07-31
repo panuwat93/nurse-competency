@@ -9,8 +9,13 @@ const k2d = K2D({
 });
 
 export const metadata: Metadata = {
-  title: "ระบบประเมินความสามารถ - โรงพยาบาลสมุทรปราการ",
+  title: "SICU1 Competency",
   description: "ระบบประเมินความสามารถและทักษะการปฏิบัติงานในห้องผู้ป่วยหนักศัลยกรรม",
+  icons: {
+    icon: '/logofavi.png',
+    shortcut: '/logofavi.png',
+    apple: '/logofavi.png',
+  },
 };
 
 export default function RootLayout({
