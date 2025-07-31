@@ -181,8 +181,8 @@ export default function Assessment1() {
     querySnapshot.forEach(doc => {
       const topics = doc.data().topics || {};
       Object.entries(topics).forEach(([label, topicData]) => {
-        if (Object.values(topicData).some(val => val)) {
-          allData[label] = { ...(allData[label] || {}), ...topicData };
+        if (topicData && typeof topicData === 'object' && Object.values(topicData as Record<string, any>).some(val => val)) {
+          allData[label] = { ...(allData[label] || {}), ...(topicData as Record<string, any>) };
         }
       });
     });
