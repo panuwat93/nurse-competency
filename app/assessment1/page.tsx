@@ -177,7 +177,7 @@ export default function Assessment1() {
   async function fetchEvaluations(staffName: string) {
     const q = query(collection(db, "assessments-competency"), where("staffName", "==", staffName));
     const querySnapshot = await getDocs(q);
-    const allData = {};
+    const allData: Record<string, any> = {};
     querySnapshot.forEach(doc => {
       const topics = doc.data().topics || {};
       Object.entries(topics).forEach(([label, topicData]) => {
