@@ -59,14 +59,14 @@ const allSections = {
 
 
 export default function Assessment2() {
-  const [answers, setAnswers] = useState({});
+  const [answers, setAnswers] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleRadio = (rowKey, value) => {
+  const handleRadio = (rowKey: string, value: string) => {
     setAnswers(a => ({ ...a, [rowKey]: value }));
   };
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setIsSubmitting(true);
 

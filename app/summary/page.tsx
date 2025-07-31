@@ -49,8 +49,8 @@ export default function Summary() {
         const skillsResults = skillsSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
         
         setSummaryData({
-          competency: competencyResults.length > 0 ? competencyResults : null,
-          skills: skillsResults.length > 0 ? skillsResults : null,
+          competency: competencyResults.length > 0 ? competencyResults : [],
+          skills: skillsResults.length > 0 ? skillsResults : [],
         });
 
       } catch (error) {
@@ -64,7 +64,7 @@ export default function Summary() {
     fetchSummary();
   }, [selectedStaff]);
 
-  const formatDate = (timestamp) => {
+  const formatDate = (timestamp: any) => {
     if (!timestamp) return "ไม่ระบุ";
     const date = timestamp.toDate ? timestamp.toDate() : new Date(timestamp);
     return date.toLocaleDateString('th-TH', {
@@ -76,7 +76,7 @@ export default function Summary() {
     });
   };
 
-  const renderCompetencyDetails = (assessment) => {
+  const renderCompetencyDetails = (assessment: any) => {
     const topics = assessment.topics || {};
     const topicKeys = Object.keys(topics);
     
@@ -164,7 +164,7 @@ export default function Summary() {
     );
   };
 
-  const renderSkillsDetails = (assessment) => {
+  const renderSkillsDetails = (assessment: any) => {
     const answers = assessment.answers || {};
     
     // Define section mappings
@@ -180,7 +180,7 @@ export default function Summary() {
     };
     
     // Group answers by section and filter only evaluated items
-    const sectionGroups = {};
+    const sectionGroups: Record<string, Array<{key: string, value: any}>> = {};
     Object.entries(answers).forEach(([key, value]) => {
       if (key.startsWith('s') && key.includes('_') && value) {
         const sectionPrefix = key.split('_')[0] + '_';
@@ -192,7 +192,7 @@ export default function Summary() {
     });
     
     // Check if there are any evaluated skills
-    const hasEvaluatedSkills = Object.values(sectionGroups).some(group => group.length > 0);
+    const hasEvaluatedSkills = Object.values(sectionGroups).some((group: Array<{key: string, value: any}>) => group.length > 0);
     
     if (!hasEvaluatedSkills) {
       return (
@@ -222,8 +222,8 @@ export default function Summary() {
             </thead>
             <tbody>
               {Object.entries(sectionGroups).map(([sectionPrefix, items], sectionIndex) => {
-                const sectionTitle = sectionMappings[sectionPrefix] || sectionPrefix;
-                return items.map((item, itemIndex) => {
+                const sectionTitle = sectionMappings[sectionPrefix as keyof typeof sectionMappings] || sectionPrefix;
+                return (items as Array<{key: string, value: any}>).map((item, itemIndex) => {
                   const skillName = getSkillNameByKey(item.key);
                   const resultText = getResultText(item.value);
                   const resultColor = getResultColor(item.value);
@@ -250,7 +250,7 @@ export default function Summary() {
     );
   };
 
-  const getSkillNameByKey = (key) => {
+  const getSkillNameByKey = (key: string) => {
     // Map skill keys to readable names
     const skillMappings = {
       // Section 1 - เครื่องมืออุปกรณ์
@@ -353,27 +353,27 @@ export default function Summary() {
       's8_19': '8.20 Severe Trauma'
     };
     
-    return skillMappings[key] || key;
+    return skillMappings[key as keyof typeof skillMappings] || key;
   };
 
-  const getResultText = (value) => {
+  const getResultText = (value: any) => {
     const resultMappings = {
       'never': 'ไม่เคย',
       'low': 'น้อย',
       'medium': 'ปานกลาง',
       'high': 'มาก'
     };
-    return resultMappings[value] || value || '-';
+    return resultMappings[value as keyof typeof resultMappings] || value || '-';
   };
 
-  const getResultColor = (value) => {
+  const getResultColor = (value: any) => {
     const colorMappings = {
       'never': '#f44336',
       'low': '#ff9800',
       'medium': '#2196f3',
       'high': '#4caf50'
     };
-    return colorMappings[value] || '#999';
+    return colorMappings[value as keyof typeof colorMappings] || '#999';
   };
 
   return (

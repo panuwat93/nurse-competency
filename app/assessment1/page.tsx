@@ -170,7 +170,7 @@ const allTopics = [
 export default function Assessment1() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [selectedStaff, setSelectedStaff] = useState("");
-  const [evaluationData, setEvaluationData] = useState({}); // Stores all fetched data for the user
+  const [evaluationData, setEvaluationData] = useState<Record<string, any>>({}); // Stores all fetched data for the user
   const [isResetting, setIsResetting] = useState(false);
   const [formKey, setFormKey] = useState(Date.now()); // Add this line
 
