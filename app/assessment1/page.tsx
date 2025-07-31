@@ -200,7 +200,7 @@ export default function Assessment1() {
     fetchEvaluations(selectedStaff);
   }, [selectedStaff]);
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setIsSubmitting(true);
 
