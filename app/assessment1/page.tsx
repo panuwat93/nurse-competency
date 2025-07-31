@@ -204,7 +204,7 @@ export default function Assessment1() {
     event.preventDefault();
     setIsSubmitting(true);
 
-    const formData = new FormData(event.target);
+    const formData = new FormData(event.target as HTMLFormElement);
     const newData = {
       staffName: selectedStaff,
       position: formData.get("position"),
