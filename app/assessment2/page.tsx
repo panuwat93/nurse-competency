@@ -70,7 +70,7 @@ export default function Assessment2() {
     event.preventDefault();
     setIsSubmitting(true);
 
-    const formData = new FormData(event.target);
+    const formData = new FormData(event.target as HTMLFormElement);
     const data = {
       staffName: formData.get("staffName"),
       position: formData.get("position"),
