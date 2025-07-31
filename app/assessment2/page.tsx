@@ -92,7 +92,7 @@ export default function Assessment2() {
 
       const result = await response.json();
       alert(`บันทึกข้อมูลสำเร็จ! (ID: ${result.documentId})`);
-      event.target.reset();
+      (event.target as HTMLFormElement).reset();
       setAnswers({});
     } catch (error) {
       console.error(error);

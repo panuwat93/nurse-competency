@@ -25,7 +25,10 @@ const staffNames = [
 
 export default function Summary() {
   const [selectedStaff, setSelectedStaff] = useState("");
-  const [summaryData, setSummaryData] = useState({ competency: null, skills: null });
+  const [summaryData, setSummaryData] = useState<{
+    competency: Array<any> | null;
+    skills: Array<any> | null;
+  }>({ competency: null, skills: null });
   const [isLoading, setIsLoading] = useState(false);
   const [expandedSections, setExpandedSections] = useState({ competency: false, skills: false });
 
@@ -49,8 +52,8 @@ export default function Summary() {
         const skillsResults = skillsSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
         
         setSummaryData({
-          competency: competencyResults.length > 0 ? competencyResults : [],
-          skills: skillsResults.length > 0 ? skillsResults : [],
+          competency: competencyResults.length > 0 ? competencyResults : null,
+          skills: skillsResults.length > 0 ? skillsResults : null,
         });
 
       } catch (error) {
@@ -452,7 +455,7 @@ export default function Summary() {
             
             {expandedSections.competency && (
               <div>
-                {summaryData.competency.map((assessment, index) => (
+                {summaryData.competency?.map((assessment: any, index: number) => (
                   <div key={assessment.id} className="modern-section" style={{ 
                     marginBottom: 24, 
                     padding: 24,
@@ -495,7 +498,7 @@ export default function Summary() {
             
             {expandedSections.skills && (
               <div>
-                {summaryData.skills.map((assessment, index) => (
+                {summaryData.skills?.map((assessment: any, index: number) => (
                   <div key={assessment.id} className="modern-section" style={{ 
                     marginBottom: 24, 
                     padding: 24,
